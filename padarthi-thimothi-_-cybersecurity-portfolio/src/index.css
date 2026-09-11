@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-red: #dc2626;
+  --color-brand-red-dark: #991b1b;
+  --color-brand-dark: #050505;
+  --color-brand-gray: #1a1a1a;
+  
+  --font-display: "Space Grotesk", sans-serif;
+  --font-sans: "Inter", sans-serif;
+  --font-bebas: "Bebas Neue", sans-serif;
+  --font-caveat: "Caveat", cursive;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-dark text-white font-sans antialiased selection:bg-brand-red selection:text-white;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+  
+  .glass-card {
+    @apply bg-white/[0.02] border border-white/5 hover:border-brand-red/50 transition-colors duration-300;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
+  }
+
+  .box-glow {
+    box-shadow: 0 0 30px rgba(220, 38, 38, 0.15);
+  }
+  
+  .bg-dots {
+    background-size: 24px 24px;
+    background-image: radial-gradient(var(--color-brand-red) 0.5px, transparent 0.5px);
+  }
+
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes border-blink {
+    0%, 100% {
+      border-color: rgba(220, 38, 38, 1);
+      box-shadow: 0 0 15px rgba(220, 38, 38, 0.8), inset 0 0 8px rgba(220, 38, 38, 0.5);
+    }
+    50% {
+      border-color: rgba(220, 38, 38, 0.3);
+      box-shadow: 0 0 4px rgba(220, 38, 38, 0.2), inset 0 0 4px rgba(220, 38, 38, 0.1);
+    }
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 12s linear infinite;
+  }
+  
+  .animate-neon-blink {
+    animation: border-blink 1.5s ease-in-out infinite;
+  }
+}
